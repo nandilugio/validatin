@@ -5,10 +5,10 @@ describe Validatin do
     expect(Validatin::VERSION).not_to be nil
   end
 
-  describe "#format_valid?" do
+  describe "#syntax_valid?" do
 
     context "Without specifying a country" do
-      subject { described_class.new(tin).valid? }
+      subject { described_class.new(tin).syntax_valid? }
 
       context "With a valid TIN" do
         let(:tin) { "12345678901" }
@@ -25,7 +25,7 @@ describe Validatin do
 
     context "Specifying a country" do
       let(:country_code) { :at }
-      subject { described_class.new(tin, country_code).valid? }
+      subject { described_class.new(tin, country_code).syntax_valid? }
 
       context "With a valid TIN" do
         let(:tin) { "12-123/1234" }
