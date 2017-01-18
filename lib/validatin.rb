@@ -1,4 +1,4 @@
-require 'forwardable'
+require "forwardable"
 
 require_relative "validatin/version"
 require_relative "validatin/syntax_check"
