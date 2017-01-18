@@ -1,8 +1,8 @@
 require "forwardable"
 
 require_relative "validatin/version"
-require_relative "validatin/api_check"
-require_relative "validatin/syntax_check"
+require_relative "validatin/structure_check"
+require_relative "validatin/remote_syntax_check"
 
 class Validatin
   extend Forwardable
@@ -15,13 +15,16 @@ class Validatin
   def_delegators :@tin, :empty?
   alias_method :blank?, :empty?
 
-  def syntax_valid?
-    SyntaxCheck.new(@tin, @country_code).valid?
+  def valid_structure?
+    StructureCheck.new(@tin, @country_code).valid?
+  end
+
+  def valid_syntax?
+    raise "Must supply country code to perform remote syntax validation." unless @country_code
+    RemoteSyntaxCheck.new(@tin, @country_code).valid?
   end
 
   def valid?
-    raise "Must supply country code to perform API validation." unless @country_code
-
-    syntax_valid? && ApiCheck.new(@tin, @country_code).valid?
+    valid_structure? && valid_syntax?
   end
 end

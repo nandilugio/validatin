@@ -1,7 +1,7 @@
 require "savon"
 
 class Validatin
-  class ApiCheck
+  class RemoteSyntaxCheck
     def initialize(tin, country_code)
       @tin = tin
       @country_code = country_code
@@ -9,7 +9,7 @@ class Validatin
 
     def valid?
       @response ||= request_with_retries!
-      @response[:valid_structure] && @response[:valid_syntax]
+      !!(@response[:valid_structure] && @response[:valid_syntax])
     rescue SocketError => e #TODO: error handling
       nil
     end

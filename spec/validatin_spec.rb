@@ -1,23 +1,45 @@
 require "spec_helper"
 
 describe Validatin do
+  VALID_AT_TIN = "12-123/1234"
+  VALID_ES_TIN = "X9722412J"
+  INVALID_TIN = "INVALID!"
+
   it "Has a version number" do
     expect(Validatin::VERSION).not_to be nil
   end
 
-  describe "#syntax_valid?" do
-
-    context "Without specifying a country" do
-      subject { described_class.new(tin).syntax_valid? }
+  describe "#valid_syntax?" do
+    context "Specifying a country" do
+      let(:country_code) { :es }
+      subject { described_class.new(tin, country_code).valid_syntax? }
 
       context "With a valid TIN" do
-        let(:tin) { "12345678901" }
+        let(:tin) { VALID_ES_TIN }
 
         it { should be true }
       end
 
       context "With an invalid TIN" do
-        let(:tin) { "ABCD" }
+        let(:tin) { INVALID_TIN }
+
+        it { should be false }
+      end
+    end
+  end
+
+  describe "#valid_structure?" do
+    context "Without specifying a country" do
+      subject { described_class.new(tin).valid_structure? }
+
+      context "With a valid TIN" do
+        let(:tin) { VALID_AT_TIN }
+
+        it { should be true }
+      end
+
+      context "With an invalid TIN" do
+        let(:tin) { INVALID_TIN }
 
         it { should be false }
       end
@@ -25,16 +47,35 @@ describe Validatin do
 
     context "Specifying a country" do
       let(:country_code) { :at }
-      subject { described_class.new(tin, country_code).syntax_valid? }
+      subject { described_class.new(tin, country_code).valid_structure? }
 
       context "With a valid TIN" do
-        let(:tin) { "12-123/1234" }
+        let(:tin) { VALID_AT_TIN }
+
+        it { should be true }
+      end
+
+      context "With an invalid TIN (for the specified country)" do
+        let(:tin) { VALID_ES_TIN }
+
+        it { should be false }
+      end
+    end
+  end
+
+  describe "#valid?" do
+    context "Specifying a country" do
+      let(:country_code) { :es }
+      subject { described_class.new(tin, country_code).valid? }
+
+      context "With a valid TIN" do
+        let(:tin) { VALID_ES_TIN }
 
         it { should be true }
       end
 
       context "With an invalid TIN" do
-        let(:tin) { "12345678901" }
+        let(:tin) { INVALID_TIN }
 
         it { should be false }
       end

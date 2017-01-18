@@ -1,6 +1,6 @@
 class Validatin
-  class SyntaxCheck
-    def initialize(tin, country_code)
+  class StructureCheck
+    def initialize(tin, country_code = nil)
       @tin = tin
       @country_code = country_code
     end
