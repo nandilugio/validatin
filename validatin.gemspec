@@ -20,5 +20,8 @@ Gem::Specification.new do |gem|
   gem.files = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^lib/}) }
 
   gem.add_runtime_dependency "savon", "~> 2.11", ">= 2.11.0"
+
   gem.add_development_dependency "rspec", "~> 3.0"
+  gem.add_development_dependency "webmock", "~> 2.3", ">= 2.3.2"
+  gem.add_development_dependency "vcr", "~> 3.0", ">= 3.0.3"
 end

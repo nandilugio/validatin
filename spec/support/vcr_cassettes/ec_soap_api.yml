@@ -1,0 +1,216 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ec.europa.eu/taxation_customs/tin/checkTinService.wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 19 Jan 2017 00:37:42 GMT
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '2721'
+      Last-Modified:
+      - Tue, 08 Mar 2016 12:29:59 GMT
+      Server:
+      - Europa
+      Proxy-Connection:
+      - Keep-Alive
+      Connection:
+      - Keep-Alive
+      Age:
+      - '0'
+    body:
+      encoding: ASCII-8BIT
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<wsdl:definitions targetNamespace=\"urn:ec.europa.eu:taxud:tin:services:checkTin\"\n\txmlns:tns1=\"urn:ec.europa.eu:taxud:tin:services:checkTin:types\"\n\txmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\"
+        xmlns:impl=\"urn:ec.europa.eu:taxud:tin:services:checkTin\"\n\txmlns:apachesoap=\"http://xml.apache.org/xml-soap\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\"\n\txmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:wsdlsoap=\"http://schemas.xmlsoap.org/wsdl/soap/\">\n\t<xsd:documentation>\n\t\t1.
+        Disclaimer\n\t\t-------------\n\t\tThe information published and the positions
+        expressed on this European\n\t\tTIN Portal are those of the authors and do
+        not necessarily reflect the\n\t\tviews of the European Commission. While the
+        European TIN Portal is run\n\t\tby the European Commission, responsibility
+        for its content is shared\n\t\tbetween the Commission and individual EU Member
+        States: content pages\n\t\tare either \"European\" in nature or \"Member State\"
+        pages, where each EU\n\t\tMember State is responsible for the content and
+        the links on its own\n\t\tpages.\n\n\t\tThe European Commission maintains
+        this European TIN Portal to allow\n\t\tpersons subject to a specific tax reporting
+        obligation imposed to them\n\t\tby European or national legislation, and having
+        an Internet access to:\n\t\t* obtain information on the national systems of
+        identification of\n\t\ttaxpayers and more specifically on the Tax Identification
+        Numbers\n\t\t(TINs) and\n\t\t* use a TIN online check module for checking
+        whether the syntax (i.e.\n\t\talgorithm) of a TIN is valid or, when the specifications
+        of the syntax\n\t\t(i.e. algorithm) are not available, whether the structure
+        of the TIN\n\t\tis valid. As such, the TIN online check module neither confirms
+        the\n\t\texistence and actual allocation of a TIN nor the identity of a person.\n\t\tThe
+        TIN online check module only confirms that, on the basis of the\n\t\tspecifications
+        provided by the EU Member States to the European\n\t\tCommission, the TIN
+        specified corresponds to the general structure of\n\t\tTINs designed and in
+        force in a country and, if explicitly stated, it\n\t\tcorresponds to the algorithm
+        designed and in force in that country.\n\n\t\tAny other use and any extraction
+        and use of the information and data\n\t\twhich is not in conformity with these
+        objectives as well as the\n\t\tcopyright notices and rules relating to the
+        protection of personal\n\t\tdata and privacy as described hereafter are strictly
+        forbidden.\n\n\t\tThis information is:\n\t\t* of a general nature only and
+        is not intended to address the specific\n\t\tcircumstances of any particular
+        individual or entity;\n\t\t* not necessarily comprehensive, complete, accurate
+        or up to date;\n\t\t* sometimes linked to external sites over which the Commission
+        services\n\t\thave no control and for which the Commission assumes no\n\t\tresponsibility;\n\t\t*
+        not professional or legal advice (if you need specific advice, you\n\t\tshould
+        always consult a suitably qualified professional).\n\n\t\tOur goal is to keep
+        this European TIN Portal and the TIN online check\n\t\tmodule timely and accurate.
+        If errors are brought to our attention, we\n\t\twill do our best to correct
+        them. EU Member States will notify the\n\t\tEuropean Commission of any relevant
+        change as soon as possible, and\n\t\tthe European Commission will update the
+        relevant pages as soon as\n\t\tpossible according to the existing planning
+        for modifications and\n\t\tmaintenance.\n\n\t\tPlease note that it cannot
+        be guaranteed that a document available on-line\n\t\texactly reproduces an
+        officially adopted text. Only European Union\n\t\tlegislation published in
+        paper editions of the Official Journal of the\n\t\tEuropean Union and national
+        legislation published in compliance with\n\t\tapplicable national legal provisions
+        are deemed authentic.\n\n\t\tIt is our goal to minimise disruption caused
+        by technical errors.\n\t\tHowever, some data or information on the European
+        TIN Portal may have\n\t\tbeen created or structured in files or formats that
+        are not error-free\n\t\tand we cannot guarantee that our service will not
+        be interrupted or\n\t\totherwise affected by such problems. The Commission
+        accepts no\n\t\tresponsibility with regard to such problems incurred as a
+        result of\n\t\tusing the European TIN Portal or any linked external sites.\n\n\t\tThis
+        disclaimer is neither intended to limit the liability of the\n\t\tCommission
+        in contravention of any requirements laid down in\n\t\tapplicable national
+        law nor exclude its liability for matters which\n\t\tmay not be excluded under
+        that law.\n\n\n\t\tUsage:\n\t\tThe countryCode input parameter must follow
+        the pattern [A-Z]{2}\n\t\tThe tinNumber input parameter must not be empty\n\n\t\tIn
+        case of problem, the returned FaultString can take the following\n\t\tspecific
+        values:\n\t\t- INVALID_INPUT: The provided CountryCode is invalid or the TIN
+        number\n\t\tis empty;\n\t\t- NO_INFORMATION: The Member State does not provide
+        validity\n\t\tinformation;\n\t\t- SERVICE_UNAVAILABLE: The SOAP service is
+        unavailable, try again\n\t\tlater;\n\t\t- SERVER_BUSY: The service can't process
+        your request. Try again\n\t\tlatter.\n  </xsd:documentation>\n\t<wsdl:types>\n\t\t<xsd:schema
+        attributeFormDefault=\"qualified\"\n\t\t\telementFormDefault=\"qualified\"\n\t\t\ttargetNamespace=\"urn:ec.europa.eu:taxud:tin:services:checkTin:types\"\n\t\t\txmlns=\"urn:ec.europa.eu:taxud:tin:services:checkTin:types\">\n\t\t\t<xsd:element
+        name=\"checkTin\">\n\t\t\t\t<xsd:complexType>\n\t\t\t\t\t<xsd:sequence>\n\t\t\t\t\t\t<xsd:element
+        name=\"countryCode\" type=\"xsd:string\" />\n\t\t\t\t\t\t<xsd:element name=\"tinNumber\"
+        type=\"xsd:string\" />\n\t\t\t\t\t</xsd:sequence>\n\t\t\t\t</xsd:complexType>\n\t\t\t</xsd:element>\n\t\t\t<xsd:element
+        name=\"checkTinResponse\">\n\t\t\t\t<xsd:complexType>\n\t\t\t\t\t<xsd:sequence>\n\t\t\t\t\t\t<xsd:element
+        name=\"countryCode\" type=\"xsd:string\" />\n\t\t\t\t\t\t<xsd:element name=\"tinNumber\"
+        type=\"xsd:string\" />\n\t\t\t\t\t\t<xsd:element name=\"requestDate\" type=\"xsd:date\"
+        />\n\t\t\t\t\t\t<xsd:element name=\"validStructure\" type=\"xsd:boolean\"
+        />\n\t\t\t\t\t\t<xsd:element name=\"validSyntax\" type=\"xsd:boolean\"\n\t\t\t\t\t\t\tminOccurs=\"0\"
+        />\n\t\t\t\t\t</xsd:sequence>\n\t\t\t\t</xsd:complexType>\n\t\t\t</xsd:element>\n\t\t</xsd:schema>\n\t</wsdl:types>\n\t<wsdl:message
+        name=\"checkTinRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"tns1:checkTin\">\n\t\t</wsdl:part>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"checkTinResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"tns1:checkTinResponse\">\n\t\t</wsdl:part>\n\t</wsdl:message>\n\t<wsdl:portType
+        name=\"checkTinPortType\">\n\t\t<wsdl:operation name=\"checkTin\">\n\t\t\t<wsdl:input
+        name=\"checkTinRequest\" message=\"impl:checkTinRequest\">\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output
+        name=\"checkTinResponse\" message=\"impl:checkTinResponse\">\n\t\t\t</wsdl:output>\n\t\t</wsdl:operation>\n\t</wsdl:portType>\n\t<wsdl:binding
+        name=\"checkTinBinding\" type=\"impl:checkTinPortType\">\n\t\t<wsdlsoap:binding
+        style=\"document\"\n\t\t\ttransport=\"http://schemas.xmlsoap.org/soap/http\"
+        />\n\t\t<wsdl:operation name=\"checkTin\">\n\t\t\t<wsdlsoap:operation soapAction=\"\"
+        />\n\t\t\t<wsdl:input name=\"checkTinRequest\">\n\t\t\t\t<wsdlsoap:body use=\"literal\"
+        />\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output name=\"checkTinResponse\">\n\t\t\t\t<wsdlsoap:body
+        use=\"literal\" />\n\t\t\t</wsdl:output>\n\t\t</wsdl:operation>\n\t</wsdl:binding>\n\t<wsdl:service
+        name=\"checkTinService\">\n\t\t<wsdl:port name=\"checkTinPort\" binding=\"impl:checkTinBinding\">\n\t\t\t<wsdlsoap:address\n\t\t\t\tlocation=\"https://ec.europa.eu/taxation_customs/tin/services/checkTinService\"
+        />\n\t\t</wsdl:port>\n\t</wsdl:service>\n</wsdl:definitions>\n"
+    http_version: 
+  recorded_at: Thu, 19 Jan 2017 00:37:42 GMT
+- request:
+    method: post
+    uri: https://ec.europa.eu/taxation_customs/tin/services/checkTinService
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns1="urn:ec.europa.eu:taxud:tin:services:checkTin"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="urn:ec.europa.eu:taxud:tin:services:checkTin:types"><env:Body><ins0:checkTin><ins0:countryCode>ES</ins0:countryCode><ins0:tinNumber>X9722412J</ins0:tinNumber></ins0:checkTin></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"checkTin"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '475'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 19 Jan 2017 00:37:43 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Server:
+      - Europa
+      Proxy-Connection:
+      - Keep-Alive
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: ASCII-8BIT
+      string: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><checkTinResponse
+        xmlns="urn:ec.europa.eu:taxud:tin:services:checkTin:types"><countryCode>ES</countryCode><tinNumber>X9722412J</tinNumber><requestDate>2017-01-19+01:00</requestDate><validStructure>true</validStructure><validSyntax>true</validSyntax></checkTinResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 19 Jan 2017 00:37:43 GMT
+- request:
+    method: post
+    uri: https://ec.europa.eu/taxation_customs/tin/services/checkTinService
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns1="urn:ec.europa.eu:taxud:tin:services:checkTin"
+        xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ins0="urn:ec.europa.eu:taxud:tin:services:checkTin:types"><env:Body><ins0:checkTin><ins0:countryCode>ES</ins0:countryCode><ins0:tinNumber>INVALID!</ins0:tinNumber></ins0:checkTin></env:Body></env:Envelope>
+    headers:
+      Soapaction:
+      - '"checkTin"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '474'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 19 Jan 2017 00:37:44 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Server:
+      - Europa
+      Proxy-Connection:
+      - Keep-Alive
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: ASCII-8BIT
+      string: <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><checkTinResponse
+        xmlns="urn:ec.europa.eu:taxud:tin:services:checkTin:types"><countryCode>ES</countryCode><tinNumber>INVALID!</tinNumber><requestDate>2017-01-19+01:00</requestDate><validStructure>false</validStructure></checkTinResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 19 Jan 2017 00:37:44 GMT
+recorded_with: VCR 3.0.3
